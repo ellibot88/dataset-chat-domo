@@ -1,0 +1,5 @@
+{
+  "name": "Domo RAG Assistant",
+  "description": "A sophisticated chatbot leveraging RAG (Retrieval-Augmented Generation) to answer questions based on specific document sets.",
+  "requestFramePermissions": []
+}

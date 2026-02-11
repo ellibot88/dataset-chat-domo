@@ -1,0 +1,23 @@
+{
+  "name": "dataset-chat",
+  "version": "0.0.3",
+  "size": {
+    "width": 1,
+    "height": 1
+  },
+  "fileName": "manifest.json",
+  "fullpage": true,
+  "id": "9eebf34a-b454-41f7-b1eb-14a0563bbf03",
+  "datasetsMapping": [
+    {
+      "alias": "sales",
+      "dataSetId": "c03a12f6-493a-4f17-9cfb-2536a191ddb9",
+      "fields": []
+    },
+    {
+      "alias": "finance",
+      "dataSetId": "5fc87312-c13e-4c1e-b32e-513bdd42161b",
+      "fields": []
+    }
+  ]
+}
