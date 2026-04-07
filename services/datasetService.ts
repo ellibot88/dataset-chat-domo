@@ -2,31 +2,17 @@ import domo from 'ryuu.js';
 import { Dataset, DatasetColumn } from '../types';
 
 /**
- * Fetches available datasets from the manifest.
- * 
- * IMPORTANT: 
- * - alias: Used for ALL API calls (/data/v1/{alias} and /sql/v1/{alias})
- * - datasetId: The actual UUID from Domo (for reference/manifest only)
- * - name: Friendly display name for the user
- * 
- * The alias must match what's in your manifest.json datasetsMapping.
+ * Fetches available datasets dynamically from manifest.json at runtime.
+ * Automatically adapts to whatever datasets are mapped in each card instance.
  */
 export const getAvailableDatasets = async (): Promise<Dataset[]> => {
-  // TODO: Replace these with your actual values from manifest.json
-  return [
-    {
-      alias: 'sales',                                    // From manifest.json
-      datasetId: 'c03a12f6-493a-4f17-9cfb-2536a191ddb9', // From manifest.json dataSetId
-      name: 'Sales Data',                                // Friendly name for display
-      columns: []
-    },
-    {
-      alias: 'finance',
-      datasetId: '5fc87312-c13e-4c1e-b32e-513bdd42161b',
-      name: 'Finance Data',
-      columns: []
-    }
-  ];
+  const manifest = await fetch('./manifest.json').then(r => r.json());
+  return (manifest.datasetsMapping || []).map((ds: any) => ({
+    alias: ds.alias,
+    datasetId: ds.dataSetId,
+    name: ds.alias,
+    columns: []
+  }));
 };
 
 /**
